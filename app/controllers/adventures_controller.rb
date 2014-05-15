@@ -3,12 +3,12 @@ class AdventuresController < ApplicationController
 	def index
 		@adventures = Adventure.all
 
-		respond_to do |f|
-			f.html
-			f.json { render json: {adventures: @adventures.as_json(
-															except: [:id, :library_id]
-															include: {:pages => {except: :id}})} }
-			end		
+		# respond_to do |f|
+		# 	f.html
+		# 	f.json { render json: {adventures: @adventures.as_json(
+		# 													except: [:id, :library_id]
+		# 													include: {:pages => {except: :id}})} }
+			# end		
 	end
 
 	def new
@@ -16,7 +16,8 @@ class AdventuresController < ApplicationController
 	end
 
 	def create
-		
+		adventure = Adventure.create adventure_params
+		redirect_to adventure_path		
 	end
 
 	def edit
@@ -28,6 +29,13 @@ class AdventuresController < ApplicationController
 	end
 
 	def show
-		
+		@adventure = Adventure.find(params[:GUID])
 	end
+
+	private
+		def adventure_params
+			params.require(:adventure).permit(:title, :author, :GUID, :library_id, :created_at, :updated_at)
+		end
+
+
 end
