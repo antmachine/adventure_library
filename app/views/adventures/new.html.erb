@@ -1,2 +1,13 @@
-new.html.erb
-<%=  %>
+<%= form_for @adventure do |f| %>
+
+	<%= f.label :title  %>
+	<%= f.text_field :title %>
+	<br>
+	<%= f.label :author %>
+	<%= f.text_field :author %>
+	<br>
+	<%# TODO redirect to page and write text of adventure %>
+
+	<%= f.submit %>
+	
+<% end %>

@@ -1,9 +1,14 @@
 <h1>ANTHONY's Adventures!</h1>
 <h1>Use at your own risk.</h1>
 
-<% @adventures.each do |adventure| %>
-	<p> <%=  link_to(adventure.name) %> </p>
 
+
+<p> <%=  link_to 'Create a new adventure' , new_adventure_path %> </p>
+
+
+<% @adventures.each do |adventure| %>
+
+	<p> <%=  link_to adventure.title, adventure_page_path(adventure.id, adventure.pages.find_by(name: "start")) %> </p>
 <% end %>
 
 <h2>Locally made adventures</h2>
