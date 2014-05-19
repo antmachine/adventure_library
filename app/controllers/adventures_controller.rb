@@ -6,9 +6,9 @@ class AdventuresController < ApplicationController
 		respond_to do |f|
 			f.html
 			# Render JSON, but don't send :id's or :library_id's
-			f.json { render json: {adventures: @adventures.as_json(
-															except: [:id, :library_id]
-															include: {:pages => {except: :id}})} }
+			# f.json { render json: {adventures: @adventures.as_json(
+			# 												except: [:id, :library_id]
+			# 												include: {:pages => {except: :id}})} }
 		end		
 	end
 
