@@ -5,6 +5,7 @@ class AdventuresController < ApplicationController
 
 		respond_to do |f|
 			f.html
+			# Render JSON, but don't send :id's or :library_id's
 			f.json { render json: {adventures: @adventures.as_json(
 															except: [:id, :library_id]
 															include: {:pages => {except: :id}})} }
@@ -17,6 +18,7 @@ class AdventuresController < ApplicationController
 
 	def create
 		adventure = Adventure.create adventure_params
+		#TODO add SecureRandom.urlsafe_base64(10) here?
 		redirect_to root_path
 	end
 
